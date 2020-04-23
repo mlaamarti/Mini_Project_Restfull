@@ -14,5 +14,9 @@
   * Mysql Connector Database
   
 ### b) Creating and Importing a Project
-  Initializr generates spring boot project with just what you need to start quickly!
-  [Initializr generates spring](https://start.spring.io)
+    Initializr generates spring boot project with just what you need to start quickly!
+    [Initializr generates spring](https://start.spring.io)
+
+### c) Packaging Structure
+    ![Packaging Structure](https://i.ibb.co/3RPGXXd/Screen-Shot-2020-04-23-at-15-49-34.png?raw=true)
+
