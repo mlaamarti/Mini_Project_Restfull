@@ -608,4 +608,119 @@ public class MiniProjectWebServicesApplication {
 
    }
  ```
-   
+ ## 1 - PHP CURL Web:
+
+### a) Tools and Technologies Used
+  * PHP 7 
+  * HTML5 , CSS3
+  * Bootstrap v4.4.1 
+  * JQuery 2.2.4
+  * PHP cURL
+
+### b) Project Structure
+Hints: 
+ * files ending with "C" are the controllers.
+ * card.png is the logo used in the project.
+ * Header to import the libriaries and maintain the navbar design in all pages.
+
+![Packaging Structure](https://i.ibb.co/jWVjM6g/Structure.jpg?raw=true)
+
+### c) First Page
+
+![Packaging Structure](https://i.ibb.co/9YGsfj7/index.jpg?raw=true)
+
+
+### d) Index.php
+``` PHP
+<html>
+
+
+<?php
+include 'header.php';
+$url = "http://localhost:8080/api/v1/creditcard"; // path to your JSON file
+$data = file_get_contents($url); // put the contents of the file into a variable
+$cards = json_decode($data); // decode the JSON feed
+
+?>
+
+
+  <br>  
+<h3 class="text-center" class="display-4">List of The cards</h3>
+    <br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Number</th>
+      <th scope="col">Expiry Date</th>
+      <th scope="col">Control Number</th>
+      <th scope="col">Type</th>
+    </tr>
+  </thead>
+  <?php foreach ($cards as $card) : ?>
+  <tbody>
+  
+    <tr>
+        <td> <?php echo $card->id; ?> </td>
+        <td> <?php echo $card->number; ?> </td>
+        <td> <?php echo $card->expiryDate; ?> </td>
+        <td> <?php echo $card->controlNumber; ?> </td>
+        <td> <?php echo $card->type; ?> </td>
+    </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+</html>
+```
+
+### d) Header and libraries
+
+``` PHP
+<!doctype html>
+<html lang="en">
+ <head>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.4.2/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.2/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.4.2/dist/js/uikit-icons.min.js"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
+
+    <!-- Icon -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+</head>
+
+    <title>Card Validator</title>
+    
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    
+    
+    <h3 class="display-4 ">Card Validator</h3>
+    <a class="navbar-brand" href="http://localhost/card/index.php">
+    <img src="card.png" width="50" height="50" alt="">
+    </a>
+    
+    
+    <a class="nav-item nav-link " href="http://localhost/card/index.php">Home</a>
+
+    <a class="nav-item nav-link " href="http://localhost/card/register.php">Register your card</a>
+
+    <a class="nav-item nav-link " href="http://localhost/card/update.php">Update your card</a>
+
+    <a class="nav-item nav-link " href="http://localhost/card/delete.php">Delete your card</a>
+
+</nav>
+
+  </head>
+ </html>
+```
